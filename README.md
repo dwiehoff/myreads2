@@ -31,7 +31,8 @@ This project is part of Udacity's FEND course. The goal was to add React code in
     ├── index.css # Global styles. You probably won't need to change anything here.
     ├── index.js # You should not need to modify this file. It is used for DOM rendering only.
     ├── MainPage.js
-    └── SearchPage.js
+    ├── SearchPage.js
+    └── Shelf.js
 ```
 
 ## Important

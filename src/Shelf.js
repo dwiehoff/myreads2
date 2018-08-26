@@ -8,7 +8,7 @@ class Shelf extends Component {
 				case 'currentlyReading' : return 'Currently Reading'; break;
 				case 'wantToRead' : return 'Want to Read'; break;
 				case 'read' : return 'Finished Reading'; break;
-				default: '';
+				default: return '';
 			}
 		})(this.props.shelf);
 		return (
@@ -23,7 +23,7 @@ class Shelf extends Component {
 	                  	.map(
 							book => (
 								<li key={book.id}>
-									<Book book={book} moveBook={this.props.moveBook} />
+									<Book book={book} shelf={this.props.shelf} moveBook={this.props.moveBook} />
 								</li>
 							)
 	                  	)
