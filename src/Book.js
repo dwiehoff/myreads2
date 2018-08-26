@@ -7,7 +7,7 @@ class Book extends Component {
               <div className="book-top">
                 <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${(this.props.book.imageLinks) ? this.props.book.imageLinks.smallThumbnail : ''}")`}}></div>
                 <div className="book-shelf-changer">
-                  <select value={this.props.book.shelf} onChange={(e) => this.props.moveBook(
+                  <select value={(this.props.shelf) ? (this.props.shelf) : ((this.props.book.shelf) ? (this.props.book.shelf) : 'none')} onChange={(e) => this.props.moveBook(
 					this.props.book, e.target.value
                   )}>
                     <option value="move" disabled>Move to...</option>
