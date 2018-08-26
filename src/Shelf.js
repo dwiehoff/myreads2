@@ -1,30 +1,36 @@
 import React, { Component } from 'react';
+import Book from './Book'
 
 class Shelf extends Component {
 	render() {
-		let shelfName = '';
-		shelfName = switch (this.props.shelf) {
-			case 'currentlyReading' : 'Currently Reading'; break;
-			case 'wantToRead' : 'Want to Read'; break;
-			case 'read' : 'Finished Reading'; break;
-			default: 'error';
-		}
+		let shelfName = ((shelf) => {
+			switch (shelf) {
+				case 'currentlyReading' : return 'Currently Reading'; break;
+				case 'wantToRead' : return 'Want to Read'; break;
+				case 'read' : return 'Finished Reading'; break;
+				default: '';
+			}
+		})(this.props.shelf);
 		return (
-			<h2 className="bookshelf-title">{shelfName}</h2>
-                <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      {
-                      	this.props.books.filter( 
+			<div className="bookshelf">
+				<h2 className="bookshelf-title"> { shelfName } </h2>
+	            <div className="bookshelf-books">
+	                <ol className="books-grid">
+	                  {
+	                  	this.props.books.filter( 
 							book => book.shelf === this.props.shelf
-                      	)
-                      	.map(
+	                  	)
+	                  	.map(
 							book => (
-								<li key={book.id}> <Book book={book} moveBook={this.props.moveBook} /> </li>
+								<li key={book.id}>
+									<Book book={book} moveBook={this.props.moveBook} />
+								</li>
 							)
-                      	)
-                      }
-                    </ol>
-               	</div>
+	                  	)
+	                  }
+	                </ol>
+	           	</div>
+	        </div>
 		)
 	}
 }
