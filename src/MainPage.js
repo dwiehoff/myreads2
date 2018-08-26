@@ -55,7 +55,7 @@ class MainPage extends Component {
 	                      	)
 	                      	.map( 
 								book => (
-									<li key={book.id}> <Book book={book} moveBook={this.props.moveBook} /> </li>
+									<li key={book.id}> <Book book={book} moveBook={this.props.moveBook} /> </li> // ??
 								)
 	                      	)
 	                      }
