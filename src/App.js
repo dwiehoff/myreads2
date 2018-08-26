@@ -5,12 +5,12 @@ import SearchPage from './SearchPage'
 import MainPage from './MainPage'
 import { Route } from 'react-router-dom'
 
-class BooksApp extends Component {
+class BooksApp extends Component { // accessed both by Main and Search page, holding all books as array
   state = {
     books: []
   }
 
-  getBooks = () => {
+  getBooks = () => { // gets all books from API and saves them to the state
     BooksAPI.getAll().then((books) => {
       this.setState({ books: books })
     })
@@ -20,7 +20,7 @@ class BooksApp extends Component {
     this.getBooks()
   }
 
-  moveBook = (book, shelf) => { // why this syntax?
+  moveBook = (book, shelf) => { // shifts books around shelves and updates view
     BooksAPI.update(book, shelf);
 
     this.getBooks()

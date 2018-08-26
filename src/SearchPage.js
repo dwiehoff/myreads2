@@ -4,6 +4,7 @@ import Book from './Book'
 import { Link } from 'react-router-dom'
 
 class SearchPage extends Component {
+	// query holds search query string, search holds results array of books from API
 	state = {
 		query: '',
 		search: []
@@ -13,13 +14,10 @@ class SearchPage extends Component {
 		this.setState({
 			query: q
 		})
-		this.getBooksFromSearch(q);
-	}
-
-	getBooksFromSearch = (q) => {
+		// get books from search when query string is truthy (i.e., not something like '')
 		if (q) {
 			BooksAPI.search(q).then((search) => {
-				if (!search.error)
+				if (!search.error) // as long as the search ran successfully
 					this.setState({ search }) // search => search: search
 				else
 					this.setState({ search: [] })
@@ -37,14 +35,12 @@ class SearchPage extends Component {
 	            <div className="search-books-bar">
 	              <Link className="close-search" to="/">Close</Link>
 	              <div className="search-books-input-wrapper">
-	                {/* ...  */
-	                }
 	                <input 
 	                	type="text"
 	                	placeholder="Search by title or author"
 	                	value={this.state.query}
 	                	onChange={(e) => this.updateQuery(e.target.value)}
-	                />
+	                /> {/* e.target.value = value of element; when changed, handle by updating query */}
 
 	              </div>
 	            </div>
@@ -53,7 +49,7 @@ class SearchPage extends Component {
 	              	{this.state.search.map(search => {
 						let alreadyAddedBook = this.props.books.filter(
               				book => book.id === search.id
-              			);
+              			); // has the book already been added to one of the shelves? ... then let the Book Component know about it
 	              		return (
 	              			
 		              		<li key={search.id}>

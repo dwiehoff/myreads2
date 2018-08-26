@@ -3,7 +3,7 @@ import Book from './Book'
 import { Link } from 'react-router-dom'
 
 class MainPage extends Component {
-	render() {
+	render() { // {/* new array which suits following condition (i.e., is on shelf); prop coming from App.js, forwarded to Book.js */}
 		return (
 
 			<div className="list-books">
@@ -56,7 +56,7 @@ class MainPage extends Component {
 	                      	)
 	                      	.map( 
 								book => (
-									<li key={book.id}> <Book book={book} moveBook={this.props.moveBook} /> </li> // ??
+									<li key={book.id}> <Book book={book} moveBook={this.props.moveBook} /> </li>
 								)
 	                      	)
 	                      }
@@ -66,7 +66,7 @@ class MainPage extends Component {
 	              </div>
 	            </div>
 	            <div className="open-search">
-	              <Link to="/add">Add a book</Link>
+	              <Link to="/add">Add a book</Link> {/* Link handler imported from react-router-dom */}
 	            </div>
 	          </div>
 
